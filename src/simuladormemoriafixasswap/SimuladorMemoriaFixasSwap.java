@@ -11,7 +11,7 @@ public class SimuladorMemoriaFixasSwap {
         
     }
     
-   public Processo[] criaProcessos(){
+   public void criaProcessos(){
    
    //Criando uma lista de objetos que contém os processos
    ArrayList<Processo> processo = new ArrayList<Processo>();
@@ -23,11 +23,7 @@ public class SimuladorMemoriaFixasSwap {
    {
        int codigoPID = random.nextInt(500);
        int tamanhoProcesso = random.nextInt(1000);
-       int tempo
    }
-   
-   Processo a = new Processo(codigoPID, 20, 5, 3);
-   return a;
     }
 }
 
