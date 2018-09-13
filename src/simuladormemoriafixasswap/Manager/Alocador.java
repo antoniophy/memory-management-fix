@@ -1,4 +1,4 @@
-package simuladormemoriafixasswap;
+package simuladormemoriafixasswap.Manager;
 
 
 public class Alocador extends Thread{

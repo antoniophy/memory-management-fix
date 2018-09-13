@@ -1,14 +1,15 @@
-package simuladormemoriafixasswap;
+package simuladormemoriafixasswap.MainApplication;
+
+import simuladormemoriafixasswap.Process.Processo;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class SimuladorMemoriaFixasSwap {
+
     public static void main(String[] args) {
         
-        //Criando os processos
-        //REGRA DE NÉGOCIO: Criação de 200 processos
-        
+
     }
     
    public void criaProcessos(){
