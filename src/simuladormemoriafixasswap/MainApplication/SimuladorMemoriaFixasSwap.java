@@ -1,15 +1,34 @@
 package simuladormemoriafixasswap.MainApplication;
 
-import simuladormemoriafixasswap.Process.Processo;
-
-import java.util.ArrayList;
-import java.util.Random;
+import simuladormemoriafixasswap.Manager.Alocador;
+import simuladormemoriafixasswap.Memory.Memory;
+import simuladormemoriafixasswap.Process.ProcessMaker;
 
 public class SimuladorMemoriaFixasSwap {
 
-    public static void main(String[] args) {
-        
+    private static final int MEMORY_SIZE = 1024;
 
+    public static void main(String[] args) {
+        Memory memory = new Memory(MEMORY_SIZE);
+        ProcessMaker processMaker = new ProcessMaker();
+
+        try {
+
+            processMaker.run();
+            processMaker.join();
+
+            memory.run();
+            memory.join();
+
+            Alocador alocador = new Alocador(memory, processMaker.getProcess());
+            alocador.run();
+            alocador.join();
+
+            alocador.printFinalRelatorio();
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }
