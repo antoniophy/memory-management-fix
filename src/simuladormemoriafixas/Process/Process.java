@@ -21,19 +21,19 @@ public class Process {
         return pid;
     }
 
-    public boolean isUpruning() {
+    public synchronized boolean isUpruning() {
         return upruning;
     }
 
-    public void setUpruning(boolean upruning) {
+    public synchronized void setUpruning(boolean upruning) {
         this.upruning = upruning;
     }
 
-    public int getCpuTime() {
+    public synchronized int getCpuTime() {
         return cpuTime;
     }
 
-    public void setCpuTime(int cpuTime) {
+    public synchronized void setCpuTime(int cpuTime) {
         this.cpuTime = cpuTime;
     }
 }

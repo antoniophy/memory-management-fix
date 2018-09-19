@@ -14,9 +14,6 @@ public class Partition {
         return size;
     }
 
-    public void setSize(int size) {
-        this.size = size;
-    }
 
     public int getPidProcess() {
         return pidProcess;

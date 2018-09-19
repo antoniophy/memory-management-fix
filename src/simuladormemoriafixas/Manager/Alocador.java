@@ -57,17 +57,23 @@ public class Alocador extends Thread{
 
 				    System.out.println("Partition ocupada! Vou para a proxima partition");
                     Process processExecuting = processes.get(partition.getPidProcess());
-                    int cpuTime = processExecuting.getCpuTime();
-                    processExecuting.setCpuTime(cpuTime--);
 
-                    System.out.println("Decrementando cpu time do processo: " + processExecuting.getPid() + " Tempo para finalizar, " + processExecuting.getCpuTime() + " Unidades de CPU");
+                    synchronized (partition){
+                        synchronized (processExecuting) {
+
+                            int cpuTime = processExecuting.getCpuTime();
+                            processExecuting.setCpuTime(--cpuTime);
+
+                            System.out.println("Decrementando cpu time do processo: " + processExecuting.getPid() + " Tempo para finalizar, " + processExecuting.getCpuTime() + " Unidades de CPU");
+                        }
+                    }
 
                     stopCPU();
 
                     if(processExecuting.getCpuTime() <= 0){
                         System.out.println("Prcesso " + processExecuting.getPid() + " Terminou! ");
                         processExecuting.setUpruning(false);
-                        System.out.println("Vou aproveitar e colocar esse outro processo!");
+                        System.out.println("Vou aproveitar e colocar esse outro processo! Colocando processo: " + process.getPid());
 
                         try {
                             Thread.sleep(100);

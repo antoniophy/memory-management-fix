@@ -20,7 +20,7 @@ public class ProcessMaker extends Thread {
     public void run(){
         Random random = new Random();
 
-        for(int id = 0; id < 200; id++){
+        for(int id = 1; id < 200; id++){
             processes.add(new Process(id, random.nextInt(DEFAULT_MAX_PROCESS_SIZE), random.nextInt(DEFAULT_MAX_CPU_TIME)));
         }
     }
