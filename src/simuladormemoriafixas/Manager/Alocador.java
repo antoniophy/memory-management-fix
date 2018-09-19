@@ -50,6 +50,7 @@ public class Alocador extends Thread{
 
 					    System.out.println("Houve fragmentacao interna");
                         fragmented++;
+                        break;
                     }
 
                 } else {
@@ -59,12 +60,12 @@ public class Alocador extends Thread{
                     int cpuTime = processExecuting.getCpuTime();
                     processExecuting.setCpuTime(cpuTime--);
 
-                    System.out.println("Decrementando cpu time do processo: " + processExecuting.getPid());
+                    System.out.println("Decrementando cpu time do processo: " + processExecuting.getPid() + " Tempo para finalizar, " + processExecuting.getCpuTime() + " Unidades de CPU");
 
                     stopCPU();
 
-                    if(processExecuting.getSize() <= 0){
-                        System.out.println("Prcesso " + processExecuting.getPid() + "Terminou! ");
+                    if(processExecuting.getCpuTime() <= 0){
+                        System.out.println("Prcesso " + processExecuting.getPid() + " Terminou! ");
                         processExecuting.setUpruning(false);
                         System.out.println("Vou aproveitar e colocar esse outro processo!");
 
@@ -82,6 +83,7 @@ public class Alocador extends Thread{
                             System.out.println("Houve fragmentacao externa");
                             fragmented++;
                         }
+                        break;
                     }
      			}
 
@@ -101,7 +103,7 @@ public class Alocador extends Thread{
 
 	private void stopCPU(){
         try {
-            Thread.sleep(100);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
