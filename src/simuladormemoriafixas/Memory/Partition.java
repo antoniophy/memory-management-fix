@@ -1,4 +1,4 @@
-package simuladormemoriafixasswap.Memory;
+package simuladormemoriafixas.Memory;
 
 public class Partition {
 
@@ -6,8 +6,8 @@ public class Partition {
     private int pidProcess;
     private int processSizeInPartition;
 
-    Partition(){
-
+    Partition(int size){
+        this.size = size;
     }
 
     public int getSize() {

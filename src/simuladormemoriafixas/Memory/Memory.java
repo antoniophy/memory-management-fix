@@ -1,4 +1,4 @@
-package simuladormemoriafixasswap.Memory;
+package simuladormemoriafixas.Memory;
 
 import java.util.List;
 
@@ -25,12 +25,14 @@ public class Memory extends Thread{
 		return partitions;
 	}
 
-	public void setPartitions(List<Partition> partitions) {
-		this.partitions = partitions;
-	}
-
 	@Override
 	public void run(){
-		//criar particoes até o tamanho da memoria <= tamanho das particoes;
+	    
+		final int tamanhoPartition = tamanhoMemoria / 10;
+
+		for(int i = 0; i < 10; i++){
+			partitions.add( new Partition(tamanhoPartition) );
+		}
+
 	}
 }

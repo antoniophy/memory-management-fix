@@ -1,8 +1,8 @@
-package simuladormemoriafixasswap.MainApplication;
+package simuladormemoriafixas.MainApplication;
 
-import simuladormemoriafixasswap.Manager.Alocador;
-import simuladormemoriafixasswap.Memory.Memory;
-import simuladormemoriafixasswap.Process.ProcessMaker;
+import simuladormemoriafixas.Manager.Alocador;
+import simuladormemoriafixas.Memory.Memory;
+import simuladormemoriafixas.Process.ProcessMaker;
 
 public class SimuladorMemoriaFixasSwap {
 
@@ -10,7 +10,7 @@ public class SimuladorMemoriaFixasSwap {
 
     public static void main(String[] args) {
         Memory memory = new Memory(MEMORY_SIZE);
-        ProcessMaker processMaker = new ProcessMaker();
+        ProcessMaker processMaker = new ProcessMaker(MEMORY_SIZE);
 
         try {
 
