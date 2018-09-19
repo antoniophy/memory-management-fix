@@ -18,11 +18,15 @@ public class ProcessMaker extends Thread {
 
     @Override
     public void run(){
+        for(int id = 0; id < 200; id++){
+            processes.add(new Process(id + 1, getRandonNumber(DEFAULT_MAX_PROCESS_SIZE), getRandonNumber(DEFAULT_MAX_CPU_TIME)));
+        }
+    }
+
+    public int getRandonNumber(int upperBound){
         Random random = new Random();
 
-        for(int id = 1; id < 200; id++){
-            processes.add(new Process(id, random.nextInt(DEFAULT_MAX_PROCESS_SIZE), random.nextInt(DEFAULT_MAX_CPU_TIME)));
-        }
+        return random.nextInt(((upperBound + 1) - 1) + 1) + 1;
     }
 
     public List<Process> getProcess(){

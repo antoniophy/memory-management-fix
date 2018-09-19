@@ -7,14 +7,16 @@ import simuladormemoriafixas.Process.Process;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Alocador extends Thread{
 
-	private int runTime;
 	private Memory memory;
 	private List<Process> processes;
 	private int fragmented;
 	private int executed;
+	private int notExecuted;
+	private int timeExecution;                  
 
 	public Alocador(Memory memory, List<Process> processes)
 	{
@@ -29,36 +31,40 @@ public class Alocador extends Thread{
 
         while(iteratorProcess.hasNext()) {
 
-        	Process process = iteratorProcess.next();
+            Process process = iteratorProcess.next();
 
-        	System.out.println("Vou executar o processo de pid: " + process.getPid());
+            System.out.println("Vou executar o processo de pid: " + process.getPid());
 
-			Iterator<Partition> iterator = memory.getPartitions().iterator();
+            Iterator<Partition> iterator = memory.getPartitions().iterator();
 
-			while(iterator.hasNext()){
-				Partition partition = iterator.next();
+            while (iterator.hasNext()) {
 
-				if(partition.getPidProcess() == 0){
+                Partition partition = iterator.next();
 
-					partition.setPidProcess(process.getPid());
-					partition.setProcessSizeInPartition(process.getSize());
-                    process.setUpruning(true);
+                if (partition.getPidProcess() == 0) {
 
-                    stopCPU();
+                    partition.setPidProcess(process.getPid());
+                    partition.setProcessSizeInPartition(process.getSize());
 
-					if(process.getSize() < partition.getSize()){
+                    synchronized (process) {
+                        process.setUpruning(true);
+                        executed++;
+                    }
 
-					    System.out.println("Houve fragmentacao interna");
+                    if (process.getSize() < partition.getSize()) {
+
+                        System.out.println("Houve fragmentacao interna");
                         fragmented++;
                         break;
                     }
 
                 } else {
 
-				    System.out.println("Partition ocupada! Vou para a proxima partition");
-                    Process processExecuting = processes.get(partition.getPidProcess());
+                    System.out.println("Partition ocupada! Vou para a proxima partition");
 
-                    synchronized (partition){
+                    Process processExecuting = processes.get(partition.getPidProcess() - 1);
+
+                    synchronized (partition) {
                         synchronized (processExecuting) {
 
                             int cpuTime = processExecuting.getCpuTime();
@@ -68,98 +74,86 @@ public class Alocador extends Thread{
                         }
                     }
 
-                    stopCPU();
-
-                    if(processExecuting.getCpuTime() <= 0){
+                    if (processExecuting.getCpuTime() <= 0) {
                         System.out.println("Prcesso " + processExecuting.getPid() + " Terminou! ");
-                        processExecuting.setUpruning(false);
-                        System.out.println("Vou aproveitar e colocar esse outro processo! Colocando processo: " + process.getPid());
 
-                        try {
-                            Thread.sleep(100);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                        synchronized (partition) {
+                            synchronized (processExecuting) {
+                                processExecuting.setUpruning(false);
+                                System.out.println("Vou aproveitar e colocar esse outro processo! Colocando processo: " + process.getPid());
+                                executed++;
+                            }
                         }
 
                         partition.setPidProcess(process.getPid());
                         partition.setProcessSizeInPartition(process.getSize());
 
-                        if(process.getSize() < partition.getSize()){
+                        synchronized (process) {
+                            process.setUpruning(true);
+                        }
 
+                        if (process.getSize() < partition.getSize()) {
                             System.out.println("Houve fragmentacao externa");
                             fragmented++;
                         }
+
                         break;
                     }
-     			}
-
-     			runTime++;
-
-     			if(!process.isUpruning()){
-     			    System.out.println("Não foi possível encontrar partitions, Houve uma fragmentacao!");
-     			    fragmented++;
-                   stopCPU();
                 }
-			}
+
+                stopCPU();
+
+            }
+
+            timeExecution++;
+
+            if (!process.isUpruning()) {
+                System.out.println("Não foi possível encontrar partitions, Houve uma fragmentacao!");
+                notExecuted++;
+            }
         }
 
-        cleanPartitions();
+        addRemainingTime();
 
 	}
 
-	private void stopCPU(){
+    private void addRemainingTime() {
+
+	    Iterator<Partition> iterator = memory.getPartitions().iterator();
+
+	    int maxCpuTimeToExecute = 0;
+
+	    while (iterator.hasNext()){
+	        Process process = processes.get(iterator.next().getPidProcess() - 1);
+
+	        if(process.getCpuTime() > maxCpuTimeToExecute){
+	            maxCpuTimeToExecute = process.getCpuTime();
+            }
+
+        }
+
+        timeExecution += maxCpuTimeToExecute;
+
+    }
+
+    private void stopCPU(){
         try {
-            Thread.sleep(500);
+            Thread.sleep(0);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-	private void cleanPartitions(){
-
-	    int totalPartitionCleaned = 0;
-
-	    Iterator<Partition> partition = memory.getPartitions().iterator();
-
-	    while (partition.hasNext()){
-
-	        Partition partitionAlloc = partition.next();
-
-	        if(partitionAlloc.getPidProcess() != 0){
-
-	            Process process = processes.get(partitionAlloc.getPidProcess());
-
-	            if(process.getCpuTime() > 0){
-	                int cpuTime = process.getCpuTime();
-	                process.setCpuTime(cpuTime--);
-
-	                stopCPU();
-
-	                if(process.getCpuTime() <= 0){
-                        System.out.println("Partition Livre! ");
-                        totalPartitionCleaned++;
-                    }
-                }
-
-            } else {
-	            System.out.println("Partition Livre! ");
-	            totalPartitionCleaned++;
-	            stopCPU();
-            }
-
-            runTime++;
-	    }
-
-	    if(totalPartitionCleaned < memory.getPartitions().size()){
-            this.cleanPartitions();
-        }
-    }
-
     public void printFinalRelatorio() {
-
+        System.out.println();
+        System.out.println();
 	    System.out.println("================== Memoria Finalizada ============== ");
-	    System.out.println("Run time: " + runTime + " unidades de CPU ");
-	    System.out.println("Total de Fragmentação: " + fragmented);
+	    System.out.println("Tempo Total de Execução: " + timeExecution + " unidades de CPU ");
+	    System.out.println("Total de fragmentação interna: " + fragmented);
+	    System.out.println("Tempo medio de execução: " + (timeExecution / executed) + " unidades de CPU ");
+	    System.out.println("Processos executados: " + executed);
+	    System.out.println("Processos descartados: " + notExecuted);
+	    System.out.println("====================================================");
 
     }
 }
