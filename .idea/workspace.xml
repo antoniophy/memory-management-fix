@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9991eed5-f93f-4e24-9ff0-43a60802df14" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simuladormemoriafixas/MainApplication/SimuladorMemoriaFixasSwap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simuladormemoriafixas/MainApplication/SimuladorMemoriaFixasSwap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/simuladormemoriafixas/Manager/Alocador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simuladormemoriafixas/Manager/Alocador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simuladormemoriafixas/Memory/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simuladormemoriafixas/Memory/Memory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simuladormemoriafixas/Process/ProcessMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simuladormemoriafixas/Process/ProcessMaker.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,12 +22,13 @@
     <session id="1233850392">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.14" value="2" />
+          <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -46,12 +46,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="6" />
-          <entry key="java" value="6094" />
+          <entry key="java" value="6605" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="6094" />
+          <entry key="JAVA" value="6605" />
           <entry key="PLAIN_TEXT" value="6" />
         </counts>
       </usages-collector>
@@ -66,22 +66,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/simuladormemoriafixas/Manager/Alocador.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="134" column="48" selection-start-line="134" selection-start-column="48" selection-end-line="134" selection-end-column="48" />
+            <state relative-caret-position="450">
+              <caret line="30" column="43" lean-forward="true" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/util/ArrayList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11880">
-              <caret line="833" selection-start-line="833" selection-end-line="833" />
-              <folding>
-                <element signature="e#30716#30717#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -103,8 +91,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/simuladormemoriafixas/MainApplication/SimuladorMemoriaFixasSwap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="37" lean-forward="true" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+            <state relative-caret-position="430">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -124,7 +112,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/simuladormemoriafixas/Memory/Memory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="165">
               <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -136,8 +124,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/simuladormemoriafixas/Process/ProcessMaker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="375">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -183,12 +171,12 @@
         <option value="$PROJECT_DIR$/src/simuladormemoriafixasswap/Memory/Memory.java" />
         <option value="$PROJECT_DIR$/src/simuladormemoriafixasswap/MainApplication/SimuladorMemoriaFixasSwap.java" />
         <option value="$PROJECT_DIR$/src/simuladormemoriafixasswap/Process/ProcessMaker.java" />
-        <option value="$PROJECT_DIR$/src/simuladormemoriafixas/MainApplication/SimuladorMemoriaFixasSwap.java" />
         <option value="$PROJECT_DIR$/src/simuladormemoriafixas/Memory/Partition.java" />
         <option value="$PROJECT_DIR$/src/simuladormemoriafixas/Process/Process.java" />
         <option value="$PROJECT_DIR$/src/simuladormemoriafixas/Process/ProcessMaker.java" />
         <option value="$PROJECT_DIR$/src/simuladormemoriafixas/Memory/Memory.java" />
         <option value="$PROJECT_DIR$/src/simuladormemoriafixas/Manager/Alocador.java" />
+        <option value="$PROJECT_DIR$/src/simuladormemoriafixas/MainApplication/SimuladorMemoriaFixasSwap.java" />
       </list>
     </option>
   </component>
@@ -207,8 +195,8 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="Scope 'Problems'; set:Problems; class com.intellij.psi.search.scope.ProblemsScope" proportions="" version="1">
-      <autoscrollFromSource ProjectPane="true" />
+    <navigator proportions="" version="1">
+      <autoscrollFromSource Scope="true" ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -287,6 +275,14 @@
               <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="lang" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="memory-management-fix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -434,7 +430,8 @@
       <workItem from="1537229616133" duration="3889000" />
       <workItem from="1537235670337" duration="5714000" />
       <workItem from="1537322329936" duration="1458000" />
-      <workItem from="1537371806431" duration="2764000" />
+      <workItem from="1537371806431" duration="4233000" />
+      <workItem from="1540936787240" duration="1134000" />
     </task>
     <servers />
   </component>
@@ -453,13 +450,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17470000" />
+    <option name="totallyTimeSpent" value="20073000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="960" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25885227" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25885227" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -504,12 +501,39 @@
     <entry file="file://$PROJECT_DIR$/_Project_Release_/memory-management-fix-master/src/simuladormemoriafixasswap/Manager/Manager.java" />
     <entry file="file://$PROJECT_DIR$/src/simuladormemoriafixasswap/Process/ProcessMakerTest.java" />
     <entry file="file://$PROJECT_DIR$/_Project_Release_/memory-management-fix-master/nbproject/project.properties" />
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/util/ArrayList.java">
+    <entry file="file://$PROJECT_DIR$/src/simuladormemoriafixas/Memory/Partition.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11880">
-          <caret line="833" selection-start-line="833" selection-end-line="833" />
+        <state relative-caret-position="165">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simuladormemoriafixas/Memory/Memory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
-            <element signature="e#30716#30717#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simuladormemoriafixas/Process/ProcessMaker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simuladormemoriafixas/MainApplication/SimuladorMemoriaFixasSwap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -525,47 +549,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/simuladormemoriafixas/Process/ProcessMaker.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="791">
+          <caret line="833" selection-start-line="833" selection-end-line="833" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#30716#30717#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/simuladormemoriafixas/Memory/Memory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/simuladormemoriafixas/MainApplication/SimuladorMemoriaFixasSwap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="37" lean-forward="true" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/simuladormemoriafixas/Memory/Partition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/simuladormemoriafixas/Manager/Alocador.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="134" column="48" selection-start-line="134" selection-start-column="48" selection-end-line="134" selection-end-column="48" />
+        <state relative-caret-position="450">
+          <caret line="30" column="43" lean-forward="true" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

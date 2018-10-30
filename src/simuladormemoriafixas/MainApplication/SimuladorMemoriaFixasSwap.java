@@ -25,8 +25,9 @@ public class SimuladorMemoriaFixasSwap {
             alocador.join();
 
             alocador.printFinalRelatorio();
+            alocador.exportLog();
 
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

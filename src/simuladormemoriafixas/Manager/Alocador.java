@@ -5,6 +5,11 @@ import simuladormemoriafixas.Memory.Memory;
 import simuladormemoriafixas.Memory.Partition;
 import simuladormemoriafixas.Process.Process;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
@@ -16,12 +21,14 @@ public class Alocador extends Thread{
 	private int fragmented;
 	private int executed;
 	private int notExecuted;
-	private int timeExecution;                  
+	private int timeExecution;
+	private List<String> logExport;
 
 	public Alocador(Memory memory, List<Process> processes)
 	{
 	    this.memory = memory;
 	    this.processes = processes;
+	    this.logExport = new ArrayList<>();
 	}
 	
 	@Override
@@ -32,7 +39,7 @@ public class Alocador extends Thread{
         while(iteratorProcess.hasNext()) {
 
             Process process = iteratorProcess.next();
-
+            logExport.add("Vou executar o processo de pid: " + process.getPid());
             System.out.println("Vou executar o processo de pid: " + process.getPid());
 
             Iterator<Partition> iterator = memory.getPartitions().iterator();
@@ -52,14 +59,14 @@ public class Alocador extends Thread{
                     }
 
                     if (process.getSize() < partition.getSize()) {
-
+                        logExport.add("Houve fragmentacao interna");
                         System.out.println("Houve fragmentacao interna");
                         fragmented++;
                         break;
                     }
 
                 } else {
-
+                    logExport.add("Partition ocupada! Vou para a proxima partition");
                     System.out.println("Partition ocupada! Vou para a proxima partition");
 
                     Process processExecuting = processes.get(partition.getPidProcess() - 1);
@@ -69,17 +76,19 @@ public class Alocador extends Thread{
 
                             int cpuTime = processExecuting.getCpuTime();
                             processExecuting.setCpuTime(--cpuTime);
-
+                            logExport.add("Decrementando cpu time do processo: " + processExecuting.getPid() + " Tempo para finalizar, " + processExecuting.getCpuTime() + " Unidades de CPU");
                             System.out.println("Decrementando cpu time do processo: " + processExecuting.getPid() + " Tempo para finalizar, " + processExecuting.getCpuTime() + " Unidades de CPU");
                         }
                     }
 
                     if (processExecuting.getCpuTime() <= 0) {
-                        System.out.println("Prcesso " + processExecuting.getPid() + " Terminou! ");
+                        logExport.add("Processo " + processExecuting.getPid() + " Terminou! ");
+                        System.out.println("Processo " + processExecuting.getPid() + " Terminou! ");
 
                         synchronized (partition) {
                             synchronized (processExecuting) {
                                 processExecuting.setUpruning(false);
+                                logExport.add("Vou aproveitar e colocar esse outro processo! Colocando processo: " + process.getPid());
                                 System.out.println("Vou aproveitar e colocar esse outro processo! Colocando processo: " + process.getPid());
                                 executed++;
                             }
@@ -93,6 +102,7 @@ public class Alocador extends Thread{
                         }
 
                         if (process.getSize() < partition.getSize()) {
+                            logExport.add("Houve fragmentacao externa");
                             System.out.println("Houve fragmentacao externa");
                             fragmented++;
                         }
@@ -108,6 +118,7 @@ public class Alocador extends Thread{
             timeExecution++;
 
             if (!process.isUpruning()) {
+                logExport.add("Não foi possível encontrar partitions, Houve uma fragmentacao!");
                 System.out.println("Não foi possível encontrar partitions, Houve uma fragmentacao!");
                 notExecuted++;
             }
@@ -138,7 +149,7 @@ public class Alocador extends Thread{
 
     private void stopCPU(){
         try {
-            Thread.sleep(0);
+            Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -146,14 +157,35 @@ public class Alocador extends Thread{
 
     public void printFinalRelatorio() {
         System.out.println();
+        logExport.add("\n");
         System.out.println();
-	    System.out.println("================== Memoria Finalizada ============== ");
+        logExport.add("\n");
+        System.out.println("================== Memoria Finalizada ============== ");
+        logExport.add("================== Memoria Finalizada ============== ");
 	    System.out.println("Tempo Total de Execução: " + timeExecution + " unidades de CPU ");
+        logExport.add("Tempo Total de Execução: " + timeExecution + " unidades de CPU ");
 	    System.out.println("Total de fragmentação interna: " + fragmented);
+	    logExport.add("Total de fragmentação interna: " + fragmented);
 	    System.out.println("Tempo medio de execução: " + (timeExecution / executed) + " unidades de CPU ");
+	    logExport.add("Tempo medio de execução: " + (timeExecution / executed) + " unidades de CPU ");
 	    System.out.println("Processos executados: " + executed);
+	    logExport.add("Processos executados: " + executed);
 	    System.out.println("Processos descartados: " + notExecuted);
+	    logExport.add("Processos descartados: " + notExecuted);
 	    System.out.println("====================================================");
+	    logExport.add("====================================================");
 
+    }
+
+    public void exportLog() throws IOException {
+        FileOutputStream fos = new FileOutputStream("log.txt");
+
+        for(String log : logExport){
+            fos.write(new StringBuilder().append(log).append("\n").toString().getBytes());
+        }
+
+        fos.close();
+
+        System.out.print("Arquivo salvo na pasta do projeto");
     }
 }
